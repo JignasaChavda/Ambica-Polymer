@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include ambica_polymer *.css
+recursive-include ambica_polymer *.csv
+recursive-include ambica_polymer *.html
+recursive-include ambica_polymer *.ico
+recursive-include ambica_polymer *.js
+recursive-include ambica_polymer *.json
+recursive-include ambica_polymer *.md
+recursive-include ambica_polymer *.png
+recursive-include ambica_polymer *.py
+recursive-include ambica_polymer *.svg
+recursive-include ambica_polymer *.txt
+recursive-exclude ambica_polymer *.pyc
