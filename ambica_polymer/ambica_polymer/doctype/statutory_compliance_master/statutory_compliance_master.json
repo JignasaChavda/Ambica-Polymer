@@ -1,0 +1,141 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-10 11:39:39.817772",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "statutory_act",
+  "provision",
+  "format_of_record",
+  "responsible",
+  "details_of_compliance",
+  "company",
+  "column_break_upqsk",
+  "to_whomwhere",
+  "website",
+  "when",
+  "in_which_form",
+  "remarks",
+  "submit_date",
+  "user",
+  "statutory_compliance_details_section",
+  "statutory_compliance_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "statutory_act",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Statutory Act"
+  },
+  {
+   "fieldname": "provision",
+   "fieldtype": "Data",
+   "label": "Provision"
+  },
+  {
+   "fieldname": "format_of_record",
+   "fieldtype": "Select",
+   "label": "Format of Record",
+   "options": "Records\nRegister\nNotices\nAbstract"
+  },
+  {
+   "fieldname": "responsible",
+   "fieldtype": "Data",
+   "label": "Responsible"
+  },
+  {
+   "fieldname": "details_of_compliance",
+   "fieldtype": "Text",
+   "label": "Details of Compliance",
+   "max_height": "8rem"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_upqsk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_whomwhere",
+   "fieldtype": "Data",
+   "label": "To whom/where"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "fieldname": "when",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "When"
+  },
+  {
+   "fieldname": "in_which_form",
+   "fieldtype": "Data",
+   "label": "In which form"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "submit_date",
+   "fieldtype": "Date",
+   "label": "Submit Date"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Table MultiSelect",
+   "label": "User",
+   "options": "Compliance User"
+  },
+  {
+   "fieldname": "statutory_compliance_details_section",
+   "fieldtype": "Section Break",
+   "label": "Statutory Compliance Details"
+  },
+  {
+   "fieldname": "statutory_compliance_details",
+   "fieldtype": "Table",
+   "label": "Statutory Compliance Details",
+   "options": "Statutory Compliance Details"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-10 11:39:53.554525",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Statutory Compliance Master",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

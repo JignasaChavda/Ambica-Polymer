@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-10 12:26:58.533152",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "statutory_act",
+  "details_of_compliance",
+  "column_break_1jcd4",
+  "user",
+  "statutory_compliance_details_section",
+  "statutory_compliance_contract_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "statutory_act",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Statutory Act"
+  },
+  {
+   "fieldname": "details_of_compliance",
+   "fieldtype": "Text",
+   "label": "What to Do",
+   "max_height": "7rem"
+  },
+  {
+   "fieldname": "column_break_1jcd4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Table MultiSelect",
+   "label": "User",
+   "options": "Compliance User"
+  },
+  {
+   "fieldname": "statutory_compliance_details_section",
+   "fieldtype": "Section Break",
+   "label": "Statutory Compliance Details"
+  },
+  {
+   "fieldname": "statutory_compliance_contract_details",
+   "fieldtype": "Table",
+   "label": "Statutory Compliance Details",
+   "options": "Statutory Compliance Contract Details"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-10 11:38:56.245714",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Statutory Compliance Contract Master",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

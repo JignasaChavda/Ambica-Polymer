@@ -112,7 +112,8 @@ app_license = "MIT"
 
 override_doctype_class = {
 	"Salary Structure Assignment": "ambica_polymer.salary_structure_assignment_overrides.SalaryStructureAssignment",
-    "Employee Promotion": "ambica_polymer.employee_promotion_overrides.EmployeePromotion"
+    "Employee Promotion": "ambica_polymer.employee_promotion_overrides.EmployeePromotion",
+    "Attendance": "ambica_polymer.attendance_overrides.Attendance"
 }
 
 # Document Events
@@ -223,3 +224,54 @@ scheduler_events = {
 # auth_hooks = [
 #	"ambica_polymer.auth.validate"
 # ]
+fixtures = [
+    "Workflow",
+    "Workflow State",
+    "Custom DocPerm",
+    "Property Setter",
+    "Role",
+    "Document Naming Rule",
+    "Workflow Action Master",
+    {"dt":"Server Script","filters":[
+        [
+            "module","in",[
+               "ambica_polymer"
+            ],
+        ]
+    ]},
+    {"dt":"Custom Field","filters":[
+        [
+            "module","in",[
+               "ambica_polymer"
+            ]
+        ]
+    ]},
+    {"dt":"Client Script","filters":[
+        [
+            "module","in",[
+               "ambica_polymer"
+            ],
+        ]
+    ]},
+    {"dt":"Print Format","filters":[
+        [
+        "module","in",[
+                "ambica_polymer"
+            ]
+        ]
+    ]},
+    {"dt":"Report","filters":[
+        [
+            "module","in",[
+                "ambica_polymer"
+            ]
+        ]
+    ]},
+    {"dt":"Notification","filters":[
+        [
+            "module","in",[
+                "ambica_polymer"
+            ]
+        ]
+    ]},
+]

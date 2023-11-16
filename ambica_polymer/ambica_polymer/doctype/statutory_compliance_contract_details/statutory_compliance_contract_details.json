@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-10 15:54:29.346355",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "supreme_facility",
+  "raxak_security",
+  "dhruv_food",
+  "submit_date",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "supreme_facility",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Supreme Facility",
+   "options": "Pending\nComplied\nNot Applicable"
+  },
+  {
+   "fieldname": "raxak_security",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Raxak Security",
+   "options": "Pending\nComplied\nNot Applicable"
+  },
+  {
+   "fieldname": "dhruv_food",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Dhruv Food Court",
+   "options": "Pending\nComplied\nNot Applicable"
+  },
+  {
+   "fieldname": "submit_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Submit Date"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-10 11:39:36.164666",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Statutory Compliance Contract Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

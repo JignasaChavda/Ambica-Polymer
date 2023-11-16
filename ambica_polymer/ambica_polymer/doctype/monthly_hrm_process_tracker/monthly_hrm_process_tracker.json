@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-10 13:50:29.319558",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "week",
+  "date",
+  "role",
+  "user",
+  "column_break_v5qq9",
+  "kra",
+  "sub_process",
+  "description",
+  "monthly_process_details_section",
+  "monthly_process_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "week",
+   "fieldtype": "Data",
+   "label": "Week"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Data",
+   "label": "Date"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Link",
+   "label": "Role",
+   "options": "Role"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_v5qq9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kra",
+   "fieldtype": "Data",
+   "label": "KRA"
+  },
+  {
+   "fieldname": "sub_process",
+   "fieldtype": "Data",
+   "label": "Sub Process"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description",
+   "max_height": "7rem"
+  },
+  {
+   "fieldname": "monthly_process_details_section",
+   "fieldtype": "Section Break",
+   "label": "Monthly Process Details"
+  },
+  {
+   "fieldname": "monthly_process_details",
+   "fieldtype": "Table",
+   "label": "Monthly Process Details",
+   "options": "Monthly Process Details"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-10 11:41:08.384845",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Monthly HRM Process Tracker",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

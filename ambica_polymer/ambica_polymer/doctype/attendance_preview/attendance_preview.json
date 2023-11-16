@@ -17,7 +17,7 @@
   "out_time",
   "column_break_kzdgj",
   "shift",
-  "work_hours",
+  "working_hours",
   "late_hours",
   "early_hours",
   "leave_type",
@@ -51,7 +51,7 @@
   {
    "fetch_from": "employee.company",
    "fieldname": "company",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Company",
    "options": "Company",
    "reqd": 1
@@ -59,13 +59,14 @@
   {
    "fieldname": "attendance_date",
    "fieldtype": "Date",
-   "label": "Attendance Date"
+   "label": "Attendance Date",
+   "reqd": 1
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "\nPresent\nAbsent\nOn Leave\nHalf Day\nWeek Off\nWork From Home",
+   "options": "\nPresent\nAbsent\nOn Leave\nHalf Day\nWeek Off",
    "reqd": 1
   },
   {
@@ -89,13 +90,6 @@
    "fieldtype": "Link",
    "label": "Shift",
    "options": "Shift Type"
-  },
-  {
-   "fieldname": "work_hours",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Work Hours",
-   "precision": "2"
   },
   {
    "fieldname": "late_hours",
@@ -133,12 +127,18 @@
    "fieldname": "remarks",
    "fieldtype": "Data",
    "label": "Remarks"
+  },
+  {
+   "fieldname": "working_hours",
+   "fieldtype": "Float",
+   "label": "Work Hours",
+   "precision": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-10-27 17:35:06.476429",
+ "modified": "2023-11-08 10:54:59.748798",
  "modified_by": "Administrator",
  "module": "Ambica Polymer",
  "name": "Attendance Preview",

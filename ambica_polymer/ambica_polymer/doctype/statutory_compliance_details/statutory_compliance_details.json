@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-10 16:06:34.261760",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "compliance_status",
+  "submit_date",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "compliance_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Compliance Status",
+   "options": "Pending\nComplied\nNot Applicable"
+  },
+  {
+   "fieldname": "submit_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Submit Date"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-10 11:40:03.593633",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Statutory Compliance Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
