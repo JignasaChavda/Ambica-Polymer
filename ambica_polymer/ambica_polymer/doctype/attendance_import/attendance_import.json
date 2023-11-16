@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-10-27 11:10:16.852179",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "import_date",
+  "column_break_e6hei",
+  "naming_series",
+  "preview_section",
+  "attendance_details",
+  "import_warnings_section",
+  "import_warnings",
+  "section_break_no2ot",
+  "show_failed_logs",
+  "export_failed_logs"
+ ],
+ "fields": [
+  {
+   "fieldname": "import_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Import Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_e6hei",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "ATT-IMP.-"
+  },
+  {
+   "fieldname": "preview_section",
+   "fieldtype": "Section Break",
+   "label": "Preview"
+  },
+  {
+   "fieldname": "attendance_details",
+   "fieldtype": "Table",
+   "label": "Attendance Details",
+   "options": "Attendance Preview"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "import_warnings_section",
+   "fieldtype": "Section Break",
+   "label": "Import File Errors and Warnings"
+  },
+  {
+   "fieldname": "import_warnings",
+   "fieldtype": "HTML",
+   "label": "Import Warnings",
+   "options": "585"
+  },
+  {
+   "fieldname": "section_break_no2ot",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_failed_logs",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Show Failed Logs"
+  },
+  {
+   "fieldname": "export_failed_logs",
+   "fieldtype": "Button",
+   "label": "Export Failed Logs"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-03 17:37:07.000850",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Attendance Import",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
