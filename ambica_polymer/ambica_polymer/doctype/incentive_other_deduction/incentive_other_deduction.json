@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-10 12:30:50.080955",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "from_date",
+  "to_date",
+  "component_type",
+  "column_break_otwqs",
+  "department",
+  "category",
+  "earning_component",
+  "deduction_component",
+  "get_records",
+  "section_break_pxgod"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date"
+  },
+  {
+   "fieldname": "component_type",
+   "fieldtype": "Select",
+   "label": "Component Type",
+   "options": "\nEarning\nDeduction"
+  },
+  {
+   "fieldname": "column_break_otwqs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Payroll Category"
+  },
+  {
+   "depends_on": "eval:doc.component_type == \"Earning\"",
+   "fieldname": "earning_component",
+   "fieldtype": "Select",
+   "label": "Component",
+   "options": "\nLoyalty Incentive\nAttendance Incentive\nBonus"
+  },
+  {
+   "depends_on": "eval:doc.component_type == \"Deduction\"",
+   "fieldname": "deduction_component",
+   "fieldtype": "Select",
+   "label": "Component",
+   "options": "\nBus Deduction\nCanteen Deduction\nLWF"
+  },
+  {
+   "fieldname": "get_records",
+   "fieldtype": "Button",
+   "label": "Get Records"
+  },
+  {
+   "fieldname": "section_break_pxgod",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:31.687240",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Incentive-Other Deduction",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

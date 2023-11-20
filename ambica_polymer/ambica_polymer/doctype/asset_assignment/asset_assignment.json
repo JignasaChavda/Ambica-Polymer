@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:owned_by",
+ "creation": "2023-11-10 12:01:50.749739",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "asset",
+  "model_number",
+  "allocation_date",
+  "column_break_mxpi1",
+  "status",
+  "return_date",
+  "owned_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "asset",
+   "fieldtype": "Link",
+   "label": "Asset",
+   "options": "Employee Asset"
+  },
+  {
+   "fieldname": "model_number",
+   "fieldtype": "Data",
+   "label": "Model Number"
+  },
+  {
+   "fieldname": "allocation_date",
+   "fieldtype": "Date",
+   "label": "Allocation Date"
+  },
+  {
+   "fieldname": "column_break_mxpi1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nOwned\nReturned"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "label": "Return Date"
+  },
+  {
+   "fieldname": "owned_by",
+   "fieldtype": "Link",
+   "label": "Owned by",
+   "options": "Employee",
+   "unique": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:35.152673",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Asset Assignment",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

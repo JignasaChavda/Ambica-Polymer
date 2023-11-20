@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-11-10 12:18:35.271844",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "from_date",
+  "to_date",
+  "posting_date",
+  "department",
+  "column_break_vvume",
+  "category",
+  "component",
+  "bonus_rate",
+  "get_data",
+  "section_break_qc9dw",
+  "bonus_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "EMP-BONUS-."
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "column_break_vvume",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Payroll Category"
+  },
+  {
+   "fieldname": "component",
+   "fieldtype": "Link",
+   "label": "Component",
+   "options": "Salary Component"
+  },
+  {
+   "depends_on": "eval:doc.component == \"Bonus\"",
+   "fetch_from": "component.bonus_rate",
+   "fieldname": "bonus_rate",
+   "fieldtype": "Data",
+   "label": "Bonus Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "get_data",
+   "fieldtype": "Button",
+   "label": "Get Data"
+  },
+  {
+   "fieldname": "section_break_qc9dw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bonus_details",
+   "fieldtype": "Table",
+   "label": "Bonus Details",
+   "options": "Bonus Details"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:32.941646",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Employee Bonus",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

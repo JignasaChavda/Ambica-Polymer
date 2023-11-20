@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-10 12:12:59.215073",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "department",
+  "designation",
+  "category",
+  "attendance_date",
+  "column_break_os6sl",
+  "present_minutes",
+  "derived_present_minutes",
+  "ot_minutes",
+  "derived_ot_minutes",
+  "absent_minutes",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation"
+  },
+  {
+   "fetch_from": "employee.payroll_category",
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "fieldname": "attendance_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Attendance Date"
+  },
+  {
+   "fieldname": "column_break_os6sl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "present_minutes",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Present Minutes",
+   "precision": "4"
+  },
+  {
+   "fieldname": "derived_present_minutes",
+   "fieldtype": "Float",
+   "label": "Derived Present Minutes",
+   "precision": "4"
+  },
+  {
+   "fieldname": "ot_minutes",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "OT Minutes",
+   "precision": "4"
+  },
+  {
+   "fieldname": "derived_ot_minutes",
+   "fieldtype": "Float",
+   "label": "Derived OT Minutes"
+  },
+  {
+   "fieldname": "absent_minutes",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Absent Minutes",
+   "precision": "4"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nPresent\nAbsent\nOn Leave\nHalf Day\nWeek Off\nWork From Home"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:34.277578",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Attendance Correction Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

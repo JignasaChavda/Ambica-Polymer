@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:employee",
+ "creation": "2023-11-10 12:29:16.746721",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "series",
+  "employee",
+  "employee_name",
+  "department",
+  "column_break_jkn63",
+  "designation",
+  "company",
+  "status",
+  "section_break_hixim",
+  "kra"
+ ],
+ "fields": [
+  {
+   "fieldname": "series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Series",
+   "no_copy": 1,
+   "options": "HR-EMP-APR-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "unique": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "column_break_jkn63",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDraft\nApproved"
+  },
+  {
+   "fieldname": "section_break_hixim",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "kra",
+   "fieldtype": "Table",
+   "label": "KRA",
+   "options": "Employee Appraisal KRA"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:30.966627",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Employee Appraisal",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

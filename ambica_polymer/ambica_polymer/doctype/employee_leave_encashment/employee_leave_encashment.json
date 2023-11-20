@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-11-10 12:17:38.291420",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "from_date",
+  "to_date",
+  "posting_date",
+  "leave_type",
+  "column_break_lu7vd",
+  "department",
+  "category",
+  "component",
+  "section_break_crsjq",
+  "encashment_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "HR-ENC-."
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "leave_type",
+   "fieldtype": "Link",
+   "label": "Leave Type",
+   "options": "Leave Type"
+  },
+  {
+   "fieldname": "column_break_lu7vd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Payroll Category"
+  },
+  {
+   "fieldname": "component",
+   "fieldtype": "Link",
+   "label": "Component",
+   "options": "Salary Component"
+  },
+  {
+   "fieldname": "section_break_crsjq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "encashment_details",
+   "fieldtype": "Table",
+   "label": "Encashment Details",
+   "options": "Encashment Details"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:33.277671",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Employee Leave Encashment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

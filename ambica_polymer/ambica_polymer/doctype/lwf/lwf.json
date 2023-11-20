@@ -1,0 +1,88 @@
+{
+ "_liked_by": "[\"jignasha@sanskartechnolab.com\"]",
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-10 11:00:25.614686",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "department",
+  "designation",
+  "column_break_gvih9",
+  "category",
+  "component",
+  "employee_contribution",
+  "employer_contribution"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Department"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation"
+  },
+  {
+   "fieldname": "column_break_gvih9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.employment_type",
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "fieldname": "component",
+   "fieldtype": "Link",
+   "label": "Component",
+   "options": "Salary Component"
+  },
+  {
+   "fieldname": "employee_contribution",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Contribution"
+  },
+  {
+   "fieldname": "employer_contribution",
+   "fieldtype": "Data",
+   "label": "Employer Contribution"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:38.343226",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "LWF",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

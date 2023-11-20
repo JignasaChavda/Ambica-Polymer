@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-10 12:21:09.401144",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "department",
+  "designation",
+  "category",
+  "column_break_b7ftt",
+  "arrear_months",
+  "old_salary",
+  "new_salary",
+  "amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation"
+  },
+  {
+   "fetch_from": "employee.payroll_category",
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Category"
+  },
+  {
+   "fieldname": "column_break_b7ftt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "arrear_months",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Arrear Months"
+  },
+  {
+   "fieldname": "old_salary",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Old Salary"
+  },
+  {
+   "fieldname": "new_salary",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "New Salary"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Amount"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:32.329892",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Arrear Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

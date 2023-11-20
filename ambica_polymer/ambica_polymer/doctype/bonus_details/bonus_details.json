@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-10 12:19:01.128907",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "department",
+  "designation",
+  "branch",
+  "total_days",
+  "column_break_mdah2",
+  "rate_per_day_for_bonus",
+  "skill_category",
+  "rate_as_per_category",
+  "eligible_amount_for_bonus_calculation",
+  "bonus_payable",
+  "daily_rate"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation"
+  },
+  {
+   "fetch_from": "employee.branch",
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "total_days",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Paid Days"
+  },
+  {
+   "fieldname": "column_break_mdah2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rate_per_day_for_bonus",
+   "fieldtype": "Data",
+   "label": "Rate per Day for Bonus"
+  },
+  {
+   "fieldname": "skill_category",
+   "fieldtype": "Link",
+   "label": "Skill Category",
+   "options": "Skill Category"
+  },
+  {
+   "fieldname": "rate_as_per_category",
+   "fieldtype": "Data",
+   "label": "Rate as per Category"
+  },
+  {
+   "fieldname": "eligible_amount_for_bonus_calculation",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Eligible Amount for Bonus Calculation",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "bonus_payable",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Bonus Payable",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "daily_rate",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Daily Rate"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:33.108941",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Bonus Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

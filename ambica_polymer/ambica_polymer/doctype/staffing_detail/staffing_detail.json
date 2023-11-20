@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-10 12:14:30.447664",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "effective_date",
+  "effective_to_date",
+  "active",
+  "department",
+  "approved_nos",
+  "column_break_hg5sz",
+  "buffer",
+  "total_approved_nos",
+  "on_muster_roll",
+  "shift_a",
+  "shift_b",
+  "shift_c",
+  "joined",
+  "absconding",
+  "resignation",
+  "eligible_for_left",
+  "current_vacancy_in_nos",
+  "vacancy_in_nos",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "effective_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Effective Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "effective_to_date",
+   "fieldtype": "Date",
+   "label": "Effective to Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "approved_nos",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Approved Nos"
+  },
+  {
+   "fieldname": "column_break_hg5sz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "buffer",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Buffer"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_approved_nos",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Approved Nos"
+  },
+  {
+   "fieldname": "on_muster_roll",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "On Muster Roll"
+  },
+  {
+   "fieldname": "shift_a",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Shift A"
+  },
+  {
+   "fieldname": "shift_b",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Shift B"
+  },
+  {
+   "fieldname": "shift_c",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Shift C"
+  },
+  {
+   "fieldname": "joined",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Joined"
+  },
+  {
+   "fieldname": "absconding",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Absconding"
+  },
+  {
+   "fieldname": "resignation",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Resignation"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "eligible_for_left",
+   "fieldtype": "Int",
+   "label": "Eligible for Left"
+  },
+  {
+   "fieldname": "current_vacancy_in_nos",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Current Vacancy in Nos"
+  },
+  {
+   "fieldname": "vacancy_in_nos",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Vacancy in Nos"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:33.775389",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Staffing Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-10 12:18:06.863634",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "department",
+  "designation",
+  "category",
+  "gross_salary",
+  "column_break_0cxzq",
+  "daily_rate",
+  "present_days",
+  "leave_balance",
+  "eligible_for_pl",
+  "is_carry_forward",
+  "is_encashed",
+  "encashable_days",
+  "amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation"
+  },
+  {
+   "fetch_from": "employee.payroll_category",
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "fetch_from": "employee.ctc",
+   "fieldname": "gross_salary",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Gross Salary"
+  },
+  {
+   "fieldname": "column_break_0cxzq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "daily_rate",
+   "fieldtype": "Data",
+   "label": "Daily Rate"
+  },
+  {
+   "fieldname": "present_days",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Present Days",
+   "precision": "4"
+  },
+  {
+   "fieldname": "leave_balance",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "PL Allowable"
+  },
+  {
+   "fieldname": "eligible_for_pl",
+   "fieldtype": "Select",
+   "label": "Eligible For PL",
+   "options": "\nEligible\nNot Eligible"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.eligible_for_pl == \"Eligible\"",
+   "fieldname": "is_carry_forward",
+   "fieldtype": "Check",
+   "label": "Is Carry Forward"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.eligible_for_pl == \"Eligible\"",
+   "fieldname": "is_encashed",
+   "fieldtype": "Check",
+   "label": "Is Encashed"
+  },
+  {
+   "depends_on": "eval:doc.eligible_for_pl == \"Eligible\"",
+   "fieldname": "encashable_days",
+   "fieldtype": "Data",
+   "label": "Encashable Days"
+  },
+  {
+   "depends_on": "eval:doc.eligible_for_pl == \"Eligible\"",
+   "fieldname": "amount",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Amount"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:33.445352",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Encashment Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,121 @@
+{
+ "_liked_by": "[\"jignasha@sanskartechnolab.com\"]",
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-11-10 11:07:26.623630",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "posting_date",
+  "category",
+  "employee_contribution",
+  "column_break_xmafe",
+  "department",
+  "component",
+  "employer_contribution",
+  "get_data",
+  "section_break_gruua",
+  "lwf_deduction",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "HR-LWF-."
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Table MultiSelect",
+   "label": "Category",
+   "options": "Employment Type Multiselect"
+  },
+  {
+   "fieldname": "employee_contribution",
+   "fieldtype": "Int",
+   "label": "Employee Contribution"
+  },
+  {
+   "fieldname": "column_break_xmafe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "component",
+   "fieldtype": "Link",
+   "label": "Component",
+   "options": "Salary Component"
+  },
+  {
+   "fieldname": "employer_contribution",
+   "fieldtype": "Int",
+   "label": "Employer Contribution"
+  },
+  {
+   "fieldname": "get_data",
+   "fieldtype": "Button",
+   "label": "Get Data"
+  },
+  {
+   "fieldname": "section_break_gruua",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "lwf_deduction",
+   "fieldtype": "Table",
+   "label": "LWF Deduction",
+   "options": "LWF"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Labour Welfare Fund",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:30.467738",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Labour Welfare Fund",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

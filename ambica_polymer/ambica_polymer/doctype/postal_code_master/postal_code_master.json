@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2023-10-05 11:51:00.493785",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "village",
+  "post_office",
+  "pincode",
+  "column_break_kyakc",
+  "sub_district",
+  "district",
+  "state"
+ ],
+ "fields": [
+  {
+   "fieldname": "village",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Village"
+  },
+  {
+   "fieldname": "post_office",
+   "fieldtype": "Data",
+   "label": "Post Office"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Pincode",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_kyakc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sub_district",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sub District"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "District"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-20 11:43:36.711989",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Postal Code Master",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
