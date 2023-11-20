@@ -227,11 +227,19 @@ scheduler_events = {
 fixtures = [
     "Workflow",
     "Workflow State",
+    "DocType",
     "Custom DocPerm",
     "Property Setter",
     "Role",
     "Document Naming Rule",
     "Workflow Action Master",
+    {"dt":"DocType","filters":[
+        [
+            "module","in",[
+               "ambica_polymer"
+            ],
+        ]
+    ]},
     {"dt":"Server Script","filters":[
         [
             "module","in",[

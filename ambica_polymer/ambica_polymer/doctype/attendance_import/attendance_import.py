@@ -1,11 +1,12 @@
 # Copyright (c) 2023, Jignasa Chavda and contributors
 # For license information, please see license.txt
+      
 
 import calendar
+import re
 from datetime import date, datetime
 import frappe
-from frappe.utils import get_html_format
-from frappe.utils import get_link_to_form
+from frappe.utils import get_html_format, get_link_to_form
 from frappe.model.document import Document
 from hrms.hr.utils import validate_active_employee
 from hrms.hr.doctype.attendance.attendance import has_overlapping_timings
@@ -13,71 +14,117 @@ from hrms.hr.doctype.attendance.attendance import has_overlapping_timings
 @frappe.whitelist(allow_guest=True)
 def validate(docname):
     doc = frappe.get_doc("Attendance Import", docname)
+    
     error_messages = {}  # Use a dictionary to store error messages by row
     salary_slip_errors = []
     validate_salary_slip(salary_slip_errors, doc)
 
-    import_warning = []  # Use a list to store error messages for each row
+    # Clear previous errors
+    doc.error_row = ""
 
     for child in doc.get("attendance_details"):
-        error_messages[child.idx] = []  # Initialize error messages list for this row
+        error_messages[child.idx] = []
         emp_link = get_link_to_form("Employee", child.employee)
         emp_name = child.employee_name
 
         validate_active_employee(child.employee)
+        validate_attendance(child, error_messages[child.idx])
         validate_import_date(child, doc.import_date, error_messages[child.idx])
         validate_shift(child, error_messages[child.idx])
         validate_ctc_approval(child, error_messages[child.idx])
         validate_DOL(child, error_messages[child.idx])
         validate_week_off(child, error_messages[child.idx])
-        validate_time(child, error_messages[child.idx])
-        validate_attendance(child, error_messages[child.idx])
+        validate_time(child, error_messages[child.idx])        
         validate_workhours(child, error_messages[child.idx])
 
-        error_messages_list = error_messages[child.idx]
-        if error_messages_list:
+        if not error_messages[child.idx]:
+            mark_attendance(child)
+
+        if error_messages[child.idx]:
+            error_row_messages = []
             error_heading = f"<b>Error in Row {child.idx}</b>"
-            import_warning.append(error_heading)
-            import_warning.extend([f"• {message}" for message in error_messages_list])
-            import_warning.append("<br>")
+            error_row_messages.append(error_heading)
+            error_row_messages.append("<br>")
+            error_row_messages.extend([f"• {message}<br>" for message in error_messages[child.idx]])
+            error_row_messages.append("<br>")
 
+            # Append error messages for this row to the doc.error_row
+            doc.error_row += "\n".join(error_row_messages)
+
+    # Append salary slip errors to the existing error_row
     if salary_slip_errors:
+        salary_error_messages = []
         salary_error_heading = "<b>Salary Slip Errors:</b>"
-        import_warning.append("<br>")
-        import_warning.append(salary_error_heading)
+        salary_error_messages.append("<br>")
+        salary_error_messages.append(salary_error_heading)
         for error in salary_slip_errors:
-            salary_error_message = f"• {error} "
-            import_warning.append("<br>")
-            import_warning.append(salary_error_message)
+            salary_error = f"• {error} "
+            salary_error_messages.append("<br>")
+            salary_error_messages.append(salary_error)
 
-    # error_records = collect_error_records(doc)  # Pass 'doc' to the function
+        # Append salary slip errors to doc.error_row
+        doc.error_row += "\n".join(salary_error_messages)
 
-    response = {
-        "status": "success" if not import_warning else "error",
-        "message": "\n\n".join(import_warning),
-        "error_records": error_records
-    }
+    doc.save()
 
+    if doc.error_row:
+        response = {
+            "status": "error",
+            "message": doc.error_row
+        }
+    else:
+        response = {
+            "status": "success"
+        }
+    print("\n\n\n", response, "\n\n\n")
     return response
 
 
+
 @frappe.whitelist(allow_guest=True)
-def collect_error_records(doc):
-    frappe.msgprint("hello")
+def collect_error_records(docname):
+    doc = frappe.get_doc("Attendance Import", docname)
     error_records = []
 
-    for child in doc.get("attendance_details"):
-        error_messages = error_messages[child.idx]
-        if error_messages:
-            error_data = {
-                "Row": child.idx,
-                "Employee": child.employee,
-                "Employee Name": child.employee_name,
-                "Errors": error_messages
-            }
-            error_records.append(error_data)
+    if hasattr(doc, 'error_row') and doc.error_row:
+        error_rows = doc.error_row.split("\n")
+
+        for row_id_line in error_rows:
+            if "Error in Row" in row_id_line:
+                try:
+                    row_id_to_extract = re.sub(r'\D', '', row_id_line)
+                    
+                    for child_row in doc.get("attendance_details"):
+                        if child_row.idx == int(row_id_to_extract):
+                            error_data = {
+                                "Row": child_row.idx,
+                                "Employee": child_row.employee,
+                                "Employee Name": child_row.employee_name,
+                                "Department": child_row.department,
+                                "Company": child_row.company,
+                                "Attendance Date": child_row.attendance_date,
+                                "Status": child_row.status,
+                                "In Time": child_row.in_time,
+                                "Out Time": child_row.out_time,
+                                "Shift": child_row.shift,
+                                "Work Hours": child_row.working_hours,
+                                "Late Hours": child_row.late_hours,
+                                "Early Hours": child_row.early_hours,
+                                "Leave Type": child_row.leave_type,
+                                "Leave Application": child_row.leave_application,
+                                "Weekly Off": child_row.weekly_off,
+                                "Holiday": child_row.holiday,
+                                "Remarks": child_row.remarks
+                            }
+                            error_records.append(error_data)
+                    
+                except ValueError:
+                    frappe.msgprint(f"Error: Invalid row ID encountered - {row_id_line}")
 
     return error_records
+
+
+
 
 def validate_import_date(child, import_date, error_messages):
     if child.attendance_date != import_date:
@@ -141,15 +188,18 @@ def validate_time(child,error_messages):
     
     if child.out_time is None:
         error_messages.append(f"Out time is missing for employee <b>{child.employee} : {child.employee_name}</b> in this record")
+    
+    if child.in_time and child.out_time:
+        if child.in_time == child.out_time:
+            error_messages.append(f"In time and Out time is same for employee <b>{child.employee} : {child.employee_name}</b> in this record")
         
 
 def validate_attendance(child,error_messages):
     if child.attendance_date:
         atte_record = frappe.get_value("Attendance", filters= {"employee":child.employee, "attendance_date":child.attendance_date},fieldname="name")
-    
-        atte_link = get_link_to_form("Attendance", atte_record)
        
         if atte_record:
+            atte_link = get_link_to_form("Attendance", atte_record)
             error_messages.append(f"Attendance for <b>{child.employee} : {child.employee_name}</b> is already marked for the date <b>{child.attendance_date}</b>: {atte_link}")
 
 
@@ -188,7 +238,7 @@ def validate_previous_month_salaryslip(salary_slip_errors, first_day_of_previous
         for pre_record in salary_slip_exists:
             salary_slip = pre_record.name
             salaryslip_link = get_link_to_form("Salary Slip", salary_slip)
-            salary_slip_links.append(f"&nbsp&nbsp&nbsp&nbsp Sal Slip{salaryslip_link}")
+            salary_slip_links.append(f"<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>Sal Slip:</b> {salaryslip_link}")
         salary_slip_errors.append(
             f"Salary Slip for the previous month of <b>{first_day_of_previous_month.strftime('%B, %Y')}</b> has not been submitted yet:\n" + "\n".join(salary_slip_links)
         )
@@ -209,7 +259,7 @@ def validate_current_month_salaryslip(salary_slip_errors, first_day_of_current_m
         for pre_record in salary_slip_exists:
             salary_slip = pre_record.name
             salaryslip_link = get_link_to_form("Salary Slip", salary_slip)
-            salary_slip_links.append(f"&nbsp&nbsp&nbsp&nbsp Sal Slip{salaryslip_link}")
+            salary_slip_links.append(f"<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>Sal Slip:</b> {salaryslip_link}")
         salary_slip_errors.append(
             f"Salary Slip for the month of <b>{first_day_of_current_month.strftime('%B, %Y')}</b> has already been submitted:\n" + "\n".join(salary_slip_links)
         )

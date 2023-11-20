@@ -14,11 +14,10 @@
   "preview_section",
   "attendance_details",
   "import_warnings_section",
-  "error_message",
+  "error_row",
   "import_warnings",
   "section_break_no2ot",
-  "show_failed_logs",
-  "export_failed_logs"
+  "show_failed_logs"
  ],
  "fields": [
   {
@@ -72,20 +71,14 @@
    "label": "Show Failed Logs"
   },
   {
-   "fieldname": "export_failed_logs",
-   "fieldtype": "Button",
-   "label": "Export Failed Logs"
-  },
-  {
-   "fieldname": "error_message",
-   "fieldtype": "Long Text",
-   "hidden": 1,
-   "label": "Error Message"
+   "fieldname": "error_row",
+   "fieldtype": "Text Editor",
+   "label": "Error row"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-07 16:07:35.857967",
+ "modified": "2023-11-17 13:10:05.994845",
  "modified_by": "Administrator",
  "module": "Ambica Polymer",
  "name": "Attendance Import",
