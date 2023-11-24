@@ -233,13 +233,6 @@ fixtures = [
     "Role",
     "Document Naming Rule",
     "Workflow Action Master",
-    {"dt":"DocType","filters":[
-        [
-            "module","in",[
-               "Ambica Polymer"
-            ],
-        ]
-    ]},
     {"dt":"Server Script","filters":[
         [
             "module","in",[
