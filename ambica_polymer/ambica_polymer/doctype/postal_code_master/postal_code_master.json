@@ -1,4 +1,6 @@
 {
+ "_comments": "[]",
+ "_liked_by": "[]",
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
@@ -59,7 +61,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-20 11:43:36.711989",
+ "modified": "2023-11-24 13:19:20.811477",
  "modified_by": "Administrator",
  "module": "Ambica Polymer",
  "name": "Postal Code Master",

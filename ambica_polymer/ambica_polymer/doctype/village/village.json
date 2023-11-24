@@ -1,0 +1,95 @@
+{
+ "_liked_by": "[\"jignasha@sanskartechnolab.com\"]",
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:village",
+ "creation": "2023-11-22 17:14:26.609281",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "village",
+  "post_office",
+  "postal_code",
+  "taluka",
+  "column_break_ctxrr",
+  "district",
+  "state",
+  "country"
+ ],
+ "fields": [
+  {
+   "fieldname": "village",
+   "fieldtype": "Data",
+   "label": "Village",
+   "unique": 1
+  },
+  {
+   "fieldname": "post_office",
+   "fieldtype": "Link",
+   "label": "Post Office",
+   "options": "Post Office"
+  },
+  {
+   "fetch_from": "post_office.postal_code",
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "post_office.taluka",
+   "fieldname": "taluka",
+   "fieldtype": "Data",
+   "label": "Taluka"
+  },
+  {
+   "fieldname": "column_break_ctxrr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "post_office.district",
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "label": "District"
+  },
+  {
+   "fetch_from": "post_office.state",
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fetch_from": "post_office.country",
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "label": "Country"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-24 13:19:17.468432",
+ "modified_by": "Administrator",
+ "module": "Ambica Polymer",
+ "name": "Village",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
