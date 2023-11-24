@@ -236,50 +236,58 @@ fixtures = [
     {"dt":"DocType","filters":[
         [
             "module","in",[
-               "ambica_polymer"
+               "Ambica Polymer"
             ],
         ]
     ]},
     {"dt":"Server Script","filters":[
         [
             "module","in",[
-               "ambica_polymer"
+               "Ambica Polymer"
             ],
         ]
     ]},
     {"dt":"Custom Field","filters":[
         [
             "module","in",[
-               "ambica_polymer"
+               "Ambica Polymer"
             ]
         ]
     ]},
     {"dt":"Client Script","filters":[
         [
             "module","in",[
-               "ambica_polymer"
+               "Ambica Polymer"
             ],
         ]
     ]},
     {"dt":"Print Format","filters":[
         [
         "module","in",[
-                "ambica_polymer"
+                "Ambica Polymer"
             ]
         ]
     ]},
     {"dt":"Report","filters":[
         [
             "module","in",[
-                "ambica_polymer"
+                "Ambica Polymer"
             ]
         ]
     ]},
     {"dt":"Notification","filters":[
         [
             "module","in",[
-                "ambica_polymer"
+                "Ambica Polymer"
             ]
         ]
     ]},
+    {"dt":"Dashboard","filters":[
+        [
+            "module","in",[
+               "Ambica Polymer"
+            ],
+        ]
+    ]}
+
 ]

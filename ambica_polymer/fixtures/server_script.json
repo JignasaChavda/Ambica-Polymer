@@ -1,1 +1,19 @@
-[]
+[
+ {
+  "_liked_by": "[]",
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 1,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "After Cancel",
+  "event_frequency": "All",
+  "modified": "2023-11-16 10:41:25.843474",
+  "module": "Ambica Polymer",
+  "name": "Clear Salary details table in employee master",
+  "reference_doctype": "Salary Structure Assignment",
+  "script": "emp = doc.employee\ncur_assignment = doc.name\n\nemployee = frappe.get_doc(\"Employee\", emp)\nemp_assignment = employee.salary_structure_assignment\n\nif cur_assignment == emp_assignment:\n    employee.salary_structure_assignment = \"\"\n    employee.salary_structure = \"\"\n    employee.get(\"earnings\").clear()\n    employee.save()\n    ",
+  "script_type": "DocType Event"
+ }
+]

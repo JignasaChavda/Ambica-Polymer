@@ -1,1 +1,134 @@
-[]
+[
+ {
+  "_liked_by": "[\"jignasha@sanskartechnolab.com\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Attendance Import",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.554106",
+  "module": "Ambica Polymer",
+  "name": "Import Attendance",
+  "script": "frappe.ui.form.on('Attendance Import', {\r    refresh(frm) {\r        frm.fields_dict[\"attendance_details\"].grid.add_custom_button(__('Download'), function() {\r            // Fetch child table data\r            const childTableData = frm.doc.attendance_details;\r            \r            // Define a mapping of custom field names to child table field names\r            const fieldMapping = {\r              \r                \"employee\": \"employee\",\r                \"employee_name\":\"employee_name\",\r                \"department\":\"department\",\r                \"company\":\"company\",\r                \"attendance_date\":\"attendance_date\",\r                \"status\":\"status\",\r                \"in_time\":\"in_time\",\r                \"out_time\":\"out_time\",\r                \"shift\":\"shift\",\r                \"work_hours\":\"work_hours\",\r                \"late_hours\":\"late_hours\",\r                \"early_hours\":\"early_hours\",\r                \"extra_hours\":\"extra_hours\",\r                \"weekly_off\":\"weekly_off\",\r                \"holiday\":\"holiday\",\r                \"remarks\":\"remarks\"\r            };\r\r            // Create a CSV string with custom field names as the first row\r            const csvContent = \"data:text/csv;charset=utf-8,\" \r                + Object.keys(fieldMapping).join(',') + '\\n'\r                + childTableData.map(row => Object.keys(fieldMapping).map(customField => row[fieldMapping[customField]] || \"\").join(',')).join('\\n');\r\r            // Create a temporary anchor element to trigger the download\r            const anchor = document.createElement('a');\r            anchor.href = encodeURI(csvContent);\r            anchor.target = '_blank';\r            anchor.download = 'Attendance.csv';\r            anchor.click();\r        });\r\r        // Change button style to match the primary color\r        frm.fields_dict[\"attendance_details\"].grid.grid_buttons.find('.btn-custom').removeClass('btn-default').addClass('btn-primary');\r        \r    }\r});\r\rfrappe.ui.form.on('Attendance Import', {\r    refresh(frm) {\r        frm.fields_dict[\"attendance_details\"].grid.add_custom_button(__('Upload'), function() {\r            // Create a file input element dynamically\r            var fileInput = document.createElement('input');\r            fileInput.type = 'file';\r            fileInput.accept = '.csv,.xlsx';\r            \r            // Trigger the file selection when the file input changes\r            fileInput.addEventListener('change', function(event) {\r                handleFileUpload(event.target.files[0]);\r            });\r\r            // Trigger the file input click event\r            fileInput.click();\r        });\r\r        // Change button style to match the primary color\r        frm.fields_dict[\"attendance_details\"].grid.grid_buttons.find('.btn-custom').removeClass('btn-default').addClass('btn-primary');\r    }  \r});\rfunction handleFileUpload(file) {\r    if (!file) {\r        frappe.msgprint(__('No file selected.'));\r        return;\r    }\r\r    var reader = new FileReader();\r    reader.onload = function(event) {\r        var csvData = event.target.result;\r        processData(csvData);\r    };\r    reader.readAsText(file);\r}\rfunction processData(csvData) {\r    var lines = csvData.split('\\n');\r    var fieldNames = lines[0].split(','); // Assuming the first row contains field names\r\r    // Remove the header line from the lines array\r    lines.splice(0, 1);\r\r    var pressItems = [];\r    for (var i = 0; i < lines.length; i++) {\r        var values = lines[i].split(',');\r\r        // Skip empty lines\r        if (values.length === 1 && values[0].trim() === '') {\r            continue;\r        }\r\r        var pressItem = {};\r        for (var j = 0; j < fieldNames.length; j++) {\r            // Trim any leading/trailing spaces from field names and values\r            var fieldName = fieldNames[j].trim();\r            var value = values[j].trim();\r\r            // Map the field name with its corresponding value\r            pressItem[fieldName] = value;\r        }\r\r        pressItems.push(pressItem);\r    }\r\r    // Get the current form instance\r    var frm = cur_frm;\r\r    // Clear existing child table rows\r    frm.clear_table('attendance_details');\r\r    // Add new child table rows based on the CSV data\r    for (var k = 0; k < pressItems.length; k++) {\r        var child = frm.add_child('attendance_details', pressItems[k]);\r    }\r\r    // Refresh the child table to display the newly added rows\r    frm.refresh_field('attendance_details');\r\r    frappe.msgprint(__('CSV data has been successfully loaded into the child table.'));\r}\r",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"jignasha@sanskartechnolab.com\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee Bonus",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.529787",
+  "module": "Ambica Polymer",
+  "name": "Fetch Bonus Rate",
+  "script": "frappe.ui.form.on('Employee Bonus', {\n\trefresh(frm) {\n\t\tfrappe.db.get_list('Salary Component', {\n            fields: ['name'], \n            filters: { \n                'earning_component_type':'Bonus'\n            }\n        }).then(function(records) {\n            var ans = records[0].name;\n            console.log(ans);\n            \n            frm.set_value('component',ans);\n        });\n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"jignasha@sanskartechnolab.com\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Labour Welfare Fund",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.504054",
+  "module": "Ambica Polymer",
+  "name": "Fetch LWF Component",
+  "script": "frappe.ui.form.on('Labour Welfare Fund', {\n\trefresh(frm) {\n\t\n\t\tfrappe.db.get_list('Salary Component', {\n            fields: ['name'], \n            filters: { \n                'component_type':'LWF'\n            }\n        }).then(function(records) {\n            var ans = records[0].name;\n            console.log(ans);\n            \n            frm.set_value('component',ans);\n        });\n\n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"jignasha@sanskartechnolab.com\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Gratuity",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.472212",
+  "module": "Ambica Polymer",
+  "name": "Fetch Gratuity Component",
+  "script": "frappe.ui.form.on('Gratuity', {\n\trefresh(frm) {\n\t\n\t\tfrappe.db.get_list('Salary Component', {\n            fields: ['name'], \n            filters: { \n                'name':'Gratuity'\n            }\n        }).then(function(records) {\n            var ans = records[0].name;\n            console.log(ans);\n            \n            frm.set_value('salary_component',ans);\n        });\n\n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"jignasha@sanskartechnolab.com\", \"Administrator\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Branch",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.366802",
+  "module": "Ambica Polymer",
+  "name": "Filter account head in branch",
+  "script": "cur_frm.cscript.onload = function(frm) {\n\n    cur_frm.set_query(\"account_head\", \"accounts\", function(doc, cdt, cdn) {\n        var child = locals[cdt][cdn]; \n\n        \n        var itemcode = child.item_code;\n      \n\n        return {\n            \"filters\": {\n                \"parent_account\":\"Accounts Payable - SAPPL\"\n              \n            }\n        };\n    });\n    \n};\n",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"jignasha@sanskartechnolab.com\", \"Administrator\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee Leave Encashment",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.319442",
+  "module": "Ambica Polymer",
+  "name": "Fetch PL Leave Type",
+  "script": "frappe.ui.form.on('Employee Leave Encashment', {\n\trefresh(frm) {\n\t\tfrappe.db.get_list('Leave Type', {\n            fields: ['leave_type_name'], \n            filters: { \n                'leave_type_name':'Privilege Leave'\n            }\n        }).then(function(records) {\n            var ans = records[0].leave_type_name;\n            console.log(ans);\n            \n            frm.set_value('leave_type',ans);\n        });\n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"Administrator\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee Leave Encashment",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.353214",
+  "module": "Ambica Polymer",
+  "name": "Fetch Component for leave encashment",
+  "script": "frappe.ui.form.on('Employee Leave Encashment', {\n\trefresh(frm) {\n\t\tfrappe.db.get_list('Salary Component', {\n            fields: ['name'], \n            filters: { \n                'earning_component_type':'Leave Encashment'\n            }\n        }).then(function(records) {\n            var ans = records[0].name;\n            console.log(records);\n            \n            frm.set_value('component',ans);\n        });\n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"Administrator\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Salary Slip",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.442111",
+  "module": "Ambica Polymer",
+  "name": "Update loan repayment schedule as per salary slip",
+  "script": "    frappe.ui.form.on('Salary Slip Loan', {\n        total_payment: function (frm, cdt, cdn) {\n            \n            var currentRow = locals[cdt][cdn];\n            var Start_date = cur_frm.doc.start_date;\n            var End_date = cur_frm.doc.end_date;\n            var loanName = currentRow.loan;\n            \n            //Get the name of Process Loan Interest Accrual record\n            var Process_accrual_response = frappe.db.get_value('Process Loan Interest Accrual', {'loan': loanName, 'posting_date': ['>=', Start_date], 'posting_date': ['<=', End_date]}, ['name', 'docstatus']);\n        \n            Process_accrual_response.then(function(result) {\n                var Process_accrual_nm = result.message.name;\n                var Process_accrual_status = result.message.docstatus;\n                console.log(Process_accrual_status);\n                \n                if (Process_accrual_nm !== undefined && Process_accrual_nm == \"Submitted\")\n                {\n                    \n                    //Get the name of Loan Interest Accrual record\n                    var Loan_accrual_response = frappe.db.get_value('Loan Interest Accrual', {'process_loan_interest_accrual': Process_accrual_nm}, ['name', 'docstatus']);\n                    \n                    Loan_accrual_response.then(function(result) {\n                        var Loan_accrual_nm = result.message.name;\n                        var Loan_accrual_status = result.message.docstatus;\n                        console.log(Loan_accrual_status);\n                        \n                        if (Loan_accrual_nm !== undefined && Loan_accrual_status == \"Submitted\")\n                        {\n                            \n                            // Cancel the Loan Interest Accrual record\n                            frappe.call({\n                                method: 'frappe.client.cancel',\n                                args: {\n                                    doctype: 'Loan Interest Accrual',\n                                    name: Loan_accrual_nm\n                                },\n                                callback: function (cancelResponse) \n                                {\n                                    if (cancelResponse.message) \n                                    {\n                                        console.log('Loan Interest Accrual Record Cancelled successfully');\n                                                        \n                                        // Delete the Loan Interest Accrual record\n                                        frappe.call({\n                                            method: 'frappe.client.delete',\n                                            args: {\n                                                doctype: 'Loan Interest Accrual',\n                                                name: Loan_accrual_nm\n                                            },\n                                            callback: function (deleteResponse) \n                                            {\n                                                if (deleteResponse.message) \n                                                {\n                                                    console.log('Loan Interest Accrual Record deleted successfully');\n                                                } else {\n                                                    console.log('Failed to delete Loan Interest Accrual record');\n                                                }\n                                            }\n                                        });\n                                    }\n                                    else\n                                    {\n                                        console.log('Failed to Cancel Loan Interest Accrual record');\n                                    }\n                                }\n                            });\n                        }\n\n                        \n                    });\n                    \n                    // Cancel the Process Loan Interest Accrual record\n                    frappe.call({\n                        method: 'frappe.client.cancel',\n                        args: {\n                            doctype: 'Process Loan Interest Accrual',\n                            name: Process_accrual_nm\n                        },\n                        callback: function (cancelResponse) \n                        {\n                            if (cancelResponse.message) \n                            {\n                                console.log('Loan Interest Accrual Record Cancelled successfully');\n                                                        \n                                // Delete the Process Loan Interest Accrual record\n                                frappe.call({\n                                    method: 'frappe.client.delete',\n                                    args: {\n                                        doctype: 'Process Loan Interest Accrual',\n                                        name: Process_accrual_nm\n                                    },\n                                    callback: function (deleteResponse) \n                                    {\n                                        if (deleteResponse.message) \n                                        {\n                                            console.log('Loan Interest Accrual Record deleted successfully');\n                                        } else {\n                                            console.log('Failed to delete Loan Interest Accrual record');\n                                        }\n                                    }\n                                });\n                            }\n                            else\n                            {\n                                console.log('Failed to Cancel Loan Interest Accrual record');\n                            }\n                        }\n                    });\n                    \n                }\n                \n                \n                \n            });\n    \n        }\n    });\n",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"Administrator\", \"jignasha@sanskartechnolab.com\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee",
+  "enabled": 1,
+  "modified": "2023-11-22 17:39:10.142541",
+  "module": "Ambica Polymer",
+  "name": "Fetch week off based on the selected holiday list",
+  "script": "frappe.ui.form.on('Employee', {\n\tholiday_list:function(frm) {\n\t    \n\t\tvar holiday_list = frm.doc.holiday_list;\n\t\t\n\n\t\tfrappe.db.get_value(\"Holiday List\", holiday_list, 'weekly_off')\n            .then(function(result) {\n                var week_off = result.message.weekly_off;\n                \n                frm.set_value('week_off', week_off);\n                frm.refresh_field('week_off');\n                frm.save();\n\n                \n            });\n         \n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "_liked_by": "[\"Administrator\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Attendance",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.427274",
+  "module": "Ambica Polymer",
+  "name": "Change status name",
+  "script": "frappe.listview_settings[\"Attendance\"] = {\n\tadd_fields: [\"status\", \"attendance_date\"],\n\n\tget_indicator: function (doc) {\n\t\tif ([\"Present\", \"Work From Home\"].includes(doc.status)) {\n\t\t\treturn [__(doc.status), \"green\", \"status,=,\" + doc.status];\n\t\t} else if ([\"Absent\", \"On Leave\"].includes(doc.status)) {\n\t\t\treturn [__(doc.status), \"red\", \"status,=,\" + doc.status];\n\t\t} else if (doc.status == \"Half Day\") {\n\t\t\treturn [__(doc.status), \"orange\", \"status,=,\" + doc.status];\n\t\t} else if (doc.status == \"Week Off\") {\n\t\t\treturn [__(doc.status), \"blue\", \"status,=,\" + doc.status];\n\t\t}\n\t},\n\n\tonload: function (list_view) {\n\t\tlet me = this;\n\n\t\tlist_view.page.add_inner_button(__(\"Mark Attendance\"), function () {\n\t\t\tlet first_day_of_month = moment().startOf('month');\n\n\t\t\tif (moment().toDate().getDate() === 1) {\n\t\t\t\tfirst_day_of_month = first_day_of_month.subtract(1, \"month\");\n\t\t\t}\n\n\t\t\tlet dialog = new frappe.ui.Dialog({\n\t\t\t\ttitle: __(\"Mark Attendance\"),\n\t\t\t\tfields: [\n\t\t\t\t\t{\n\t\t\t\t\t\tfieldname: \"employee\",\n\t\t\t\t\t\tlabel: __(\"For Employee\"),\n\t\t\t\t\t\tfieldtype: \"Link\",\n\t\t\t\t\t\toptions: \"Employee\",\n\t\t\t\t\t\tget_query: () => {\n\t\t\t\t\t\t\treturn {\n\t\t\t\t\t\t\t\tquery: \"erpnext.controllers.queries.employee_query\",\n\t\t\t\t\t\t\t};\n\t\t\t\t\t\t},\n\t\t\t\t\t\treqd: 1,\n\t\t\t\t\t\tonchange: () => me.reset_dialog(dialog),\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tfieldtype: \"Section Break\",\n\t\t\t\t\t\tfieldname: \"time_period_section\",\n\t\t\t\t\t\thidden: 1,\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tlabel: __(\"Start\"),\n\t\t\t\t\t\tfieldtype: \"Date\",\n\t\t\t\t\t\tfieldname: \"from_date\",\n\t\t\t\t\t\treqd: 1,\n\t\t\t\t\t\tdefault: first_day_of_month.toDate(),\n\t\t\t\t\t\tonchange: () => me.get_unmarked_days(dialog),\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tfieldtype: \"Column Break\",\n\t\t\t\t\t\tfieldname: \"time_period_column\",\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tlabel: __(\"End\"),\n\t\t\t\t\t\tfieldtype: \"Date\",\n\t\t\t\t\t\tfieldname: \"to_date\",\n\t\t\t\t\t\treqd: 1,\n\t\t\t\t\t\tdefault: moment().subtract(1, 'days').toDate(),\n\t\t\t\t\t\tonchange: () => me.get_unmarked_days(dialog),\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tfieldtype: \"Section Break\",\n\t\t\t\t\t\tfieldname: \"days_section\",\n\t\t\t\t\t\thidden: 1,\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tlabel: __(\"Status\"),\n\t\t\t\t\t\tfieldtype: \"Select\",\n\t\t\t\t\t\tfieldname: \"status\",\n\t\t\t\t\t\toptions: [\"Present\", \"Absent\", \"Half Day\", \"Work From Home\"],\n\t\t\t\t\t\treqd: 1,\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tlabel: __(\"Exclude Holidays\"),\n\t\t\t\t\t\tfieldtype: \"Check\",\n\t\t\t\t\t\tfieldname: \"exclude_holidays\",\n\t\t\t\t\t\tonchange: () => me.get_unmarked_days(dialog),\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tlabel: __(\"Unmarked Attendance for days\"),\n\t\t\t\t\t\tfieldname: \"unmarked_days\",\n\t\t\t\t\t\tfieldtype: \"MultiCheck\",\n\t\t\t\t\t\toptions: [],\n\t\t\t\t\t\tcolumns: 2,\n\t\t\t\t\t},\n\t\t\t\t],\n\t\t\t\tprimary_action(data) {\n\t\t\t\t\tif (cur_dialog.no_unmarked_days_left) {\n\t\t\t\t\t\tfrappe.msgprint(\n\t\t\t\t\t\t\t__(\n\t\t\t\t\t\t\t\t\"Attendance from {0} to {1} has already been marked for the Employee {2}\",\n\t\t\t\t\t\t\t\t[data.from_date, data.to_date, data.employee]\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t);\n\t\t\t\t\t} else {\n\t\t\t\t\t\tfrappe.confirm(\n\t\t\t\t\t\t\t__(\"Mark attendance as {0} for {1} on selected dates?\", [\n\t\t\t\t\t\t\t\tdata.status,\n\t\t\t\t\t\t\t\tdata.employee,\n\t\t\t\t\t\t\t]),\n\t\t\t\t\t\t\t() => {\n\t\t\t\t\t\t\t\tfrappe.call({\n\t\t\t\t\t\t\t\t\tmethod: \"hrms.hr.doctype.attendance.attendance.mark_bulk_attendance\",\n\t\t\t\t\t\t\t\t\targs: {\n\t\t\t\t\t\t\t\t\t\tdata: data,\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\tcallback: function (r) {\n\t\t\t\t\t\t\t\t\t\tif (r.message === 1) {\n\t\t\t\t\t\t\t\t\t\t\tfrappe.show_alert({\n\t\t\t\t\t\t\t\t\t\t\t\tmessage: __(\"Attendance Marked\"),\n\t\t\t\t\t\t\t\t\t\t\t\tindicator: \"blue\",\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t\tcur_dialog.hide();\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t);\n\t\t\t\t\t}\n\t\t\t\t\tdialog.hide();\n\t\t\t\t\tlist_view.refresh();\n\t\t\t\t},\n\t\t\t\tprimary_action_label: __(\"Mark Attendance\"),\n\t\t\t});\n\t\t\tdialog.show();\n\t\t});\n\t},\n\n\treset_dialog: function (dialog) {\n\t\tlet fields = dialog.fields_dict;\n\n\t\tdialog.set_df_property(\n\t\t\t\"time_period_section\",\n\t\t\t\"hidden\",\n\t\t\tfields.employee.value ? 0 : 1\n\t\t);\n\n\t\tdialog.set_df_property(\"days_section\", \"hidden\", 1);\n\t\tdialog.set_df_property(\"unmarked_days\", \"options\", []);\n\t\tdialog.no_unmarked_days_left = false;\n\t\tfields.exclude_holidays.value = false;\n\n\t\tfields.to_date.datepicker.update({\n            maxDate: moment().subtract(1, 'days').toDate()\n        });\n\n\t\tthis.get_unmarked_days(dialog)\n\t},\n\n\tget_unmarked_days: function (dialog) {\n\t\tlet fields = dialog.fields_dict;\n\t\tif (fields.employee.value && fields.from_date.value && fields.to_date.value) {\n\t\t\tdialog.set_df_property(\"days_section\", \"hidden\", 0);\n\t\t\tdialog.set_df_property(\"status\", \"hidden\", 0);\n\t\t\tdialog.set_df_property(\"exclude_holidays\", \"hidden\", 0);\n\t\t\tdialog.no_unmarked_days_left = false;\n\n\t\t\tfrappe\n\t\t\t\t.call({\n\t\t\t\t\tmethod: \"hrms.hr.doctype.attendance.attendance.get_unmarked_days\",\n\t\t\t\t\tasync: false,\n\t\t\t\t\targs: {\n\t\t\t\t\t\temployee: fields.employee.value,\n\t\t\t\t\t\tfrom_date: fields.from_date.value,\n\t\t\t\t\t\tto_date: fields.to_date.value,\n\t\t\t\t\t\texclude_holidays: fields.exclude_holidays.value,\n\t\t\t\t\t},\n\t\t\t\t})\n\t\t\t\t.then((r) => {\n\t\t\t\t\tvar options = [];\n\n\t\t\t\t\tfor (var d in r.message) {\n\t\t\t\t\t\tvar momentObj = moment(r.message[d], \"YYYY-MM-DD\");\n\t\t\t\t\t\tvar date = momentObj.format(\"DD-MM-YYYY\");\n\t\t\t\t\t\toptions.push({\n\t\t\t\t\t\t\tlabel: date,\n\t\t\t\t\t\t\tvalue: r.message[d],\n\t\t\t\t\t\t\tchecked: 1,\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\n\t\t\t\t\tdialog.set_df_property(\n\t\t\t\t\t\t\"unmarked_days\",\n\t\t\t\t\t\t\"options\",\n\t\t\t\t\t\toptions.length > 0 ? options : []\n\t\t\t\t\t);\n\t\t\t\t\tdialog.no_unmarked_days_left = options.length === 0;\n\t\t\t\t});\n\t\t}\n\t},\n};\n",
+  "view": "List"
+ },
+ {
+  "_liked_by": "[\"Administrator\"]",
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee Promotion",
+  "enabled": 1,
+  "modified": "2023-11-16 10:44:24.381100",
+  "module": "Ambica Polymer",
+  "name": "Change colour of promotion history",
+  "script": "frappe.ui.form.on('Employee Property History', {\n\trefresh(frm) {\n\t    frm.fields_dict[\"current\"].addClass('text-primary');\t\n\t}\n});",
+  "view": "Form"
+ }
+]
