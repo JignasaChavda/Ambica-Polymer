@@ -39,6 +39,9 @@ class Attendance(Document):
 		self.validate_overlapping_shift_attendance()
 		self.validate_employee_status()
 		self.check_leave_record()
+		
+
+
 
 	def on_cancel(self):
 		self.unlink_attendance_from_checkins()
